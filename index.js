@@ -1,24 +1,14 @@
 
 function duplicateEncode(word){
-    let obj = {};
-    for ( let i = 0; i < word.length; i++ ) {
-        obj[word[i].toLowerCase()] = 0;
-    } 
-    for ( let i = 0; i < word.length; i++ ) {
-        obj[word[i].toLowerCase()]++;
-    }
-    // console.log(obj);
-    let rez = '';
-    for ( let i = 0; i < word.length; i++ ) {
-        let letter = word[i].toLowerCase();
+ let str = word.toLowerCase();
+ let arr = str.split('');
+ let arr2 = arr.map( function(item, index, arr_) {
+    let j = arr_.indexOf(item);
+    let k = arr_.lastIndexOf(item);
+    return j == k ? '(' : ')';
+ });
+ return arr2.join('');
 
-        if ( obj[letter] == 1 ) {
-            rez += '(';
-        } else {
-            rez += ')';
-        }
-    }
-    return rez;
 }
                                                 //    ))())))()))
 console.log( duplicateEncode( 'llaJlllwSll' ) );  //  ))(()))(())
