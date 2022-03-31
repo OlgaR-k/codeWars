@@ -1,28 +1,19 @@
+function isIsogram(str){
 
-function getNum32bit(num) {
-    let rez = 0;
-    let a = num;
+    let obj = {};
 
-    while ( a !== 0 ) {
-        rez += a % 2;
-        a = ( a - a % 2) / 2;
+    for ( let i = 0; i < str.length; i++ ) {
+        obj[str[i].toLowerCase()] = 0;
     }
-    return rez;
-}
-
-function sortByBit(arr) {
-    return arr.sort(function (a, b) {
-        let a1 = getNum32bit(a);
-        let b1 = getNum32bit(b);
-        if ( a1 == b1 ) {
-            return a - b;
+    for ( let i = 0; i < str.length; i++ ) {
+        obj[str[i].toLowerCase()]++;
+    }
+    for ( let key in obj ) {
+        if ( obj[key] > 1 ) {
+            return false;
         }
-        return a1 - b1;
-    });
+    }
+    return true;
 }
 
-let arr = [7, 6, 15, 8];
-
-sortByBiy(arr);
-
-console.log(arr);
+console.log( isIsogram( 'aba' ) );
