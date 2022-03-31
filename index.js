@@ -7,13 +7,14 @@ function getNum32bit(num) {
         rez += a % 2;
         a = ( a - a % 2) / 2;
     }
+    return rez;
 }
 
-function sortByBiy(arr) {
+function sortByBit(arr) {
     return arr.sort(function (a, b) {
         let a1 = getNum32bit(a);
         let b1 = getNum32bit(b);
-        if ( a1 = b1 ) {
+        if ( a1 == b1 ) {
             return a - b;
         }
         return a1 - b1;
@@ -22,6 +23,6 @@ function sortByBiy(arr) {
 
 let arr = [7, 6, 15, 8];
 
-// sortByBiy(arr);
+sortByBiy(arr);
 
 console.log(arr);
