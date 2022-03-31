@@ -1,12 +1,17 @@
 
-function nthFibo(n) {
-    let a1 = 0;
-    let a2 = 1;
+function solution(number){
+  if (number < 0) {
+      return 0;
+  }
+  let arr = [];
+  for (let i = number - 1; i >= 3; i-- ) {
+      if ( (i % 3 == 0) || (i % 5 == 0 )) {
+          arr.push(i);
+      }
+  }
 
-    for ( let i = 1; i < n; i++ ) {
-        [a1, a2] = [a2, a1 + a2];
-    }
-    return a1;
+//   console.log(arr);
+  return arr.reduce( (sum, item) => sum+= item, 0 )
 }
 
-console.log( nthFibo( 12 ) );  //  2
+console.log( solution( 10 ) );  //  2
