@@ -1,14 +1,12 @@
 
-function duplicateEncode(word){
- let str = word.toLowerCase();
- let arr = str.split('');
- let arr2 = arr.map( function(item, index, arr_) {
-    let j = arr_.indexOf(item);
-    let k = arr_.lastIndexOf(item);
-    return j == k ? '(' : ')';
- });
- return arr2.join('');
+function nthFibo(n) {
+    let a1 = 0;
+    let a2 = 1;
 
+    for ( let i = 1; i < n; i++ ) {
+        [a1, a2] = [a2, a1 + a2];
+    }
+    return a1;
 }
-                                                //    ))())))()))
-console.log( duplicateEncode( 'llaJlllwSll' ) );  //  ))(()))(())
+
+console.log( nthFibo( 12 ) );  //  2
