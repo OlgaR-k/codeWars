@@ -1,22 +1,26 @@
-
-var runLengthEncoding = function (str) {
-      if ( str.length == 0 ) {
-          return [];
-      }
-      let rez = [];
-      let last = str[0];
-      let arr = [1, str[0]];
+function recycle(array) {
+      const typeMaterial = ['paper', 'glass', 'organic', 'plastic'];
   
-      for (let i = 1; i < str.length; i++) {
-          if (last !== str[i]) {
-              last = str[i];
-              rez.push(arr);
-              arr = [0];
+      const rez = {
+          [typeMaterial[0]]: [],
+          [typeMaterial[1]]: [],
+          [typeMaterial[2]]: [],
+          [typeMaterial[3]]: [],
+      }
+  
+      let arrmaterial = ['material', 'secondMaterial']
+      for (let i = 0; i < array.length; i++) {
+          let obj = array[i];
+          for (let k = 0; k < arrmaterial.length; k++) {
+              if (obj[arrmaterial[k]]) {
+                  rez[obj[arrmaterial[k]]].push(obj['type'])
+              }
           }
-          arr[0]++;
-          arr[1] = str[i];
       }
-      rez.push(arr);
   
-      return rez;
+      let arr = [];
+      for ( let i = 0; i < typeMaterial.length; i++ ) {
+          arr.push( rez[typeMaterial[i]] );
+      }
+      return arr;
   }
