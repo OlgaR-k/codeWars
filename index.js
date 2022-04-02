@@ -1,21 +1,22 @@
 
-function deepCount2(a, rez) {
-      for (let i = 0; i < a.length; i++ ) {
-          rez[0]++;
-          if ( Array.isArray(a[i]) ) {
-              deepCount2(a[i], rez);
-          }
+var runLengthEncoding = function (str) {
+      if ( str.length == 0 ) {
+          return [];
       }
-      return rez[0];
-  }
+      let rez = [];
+      let last = str[0];
+      let arr = [1, str[0]];
   
-  function deepCount(a) {
-      let rez = [0];
-      for (let i = 0; i < a.length; i++ ) {
-          rez[0]++;
-          if ( Array.isArray(a[i]) ) {
-              deepCount2(a[i], rez);
+      for (let i = 1; i < str.length; i++) {
+          if (last !== str[i]) {
+              last = str[i];
+              rez.push(arr);
+              arr = [0];
           }
+          arr[0]++;
+          arr[1] = str[i];
       }
-      return rez[0];
+      rez.push(arr);
+  
+      return rez;
   }
