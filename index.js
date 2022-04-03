@@ -1,20 +1,6 @@
-function myLanguages(results) {
-  const MIN = 60;
-  let ball = [];
-
-  for ( let key in results ) {
-      if (results[key] >= MIN ) {
-          ball.push( results[key] );
-      }
-  }
-  ball.sort( (a, b) => b - a );
-
-  let rez = Array(ball.length);
-  for ( let key in results ) {
-      if (results[key] >= MIN ) {
-         let index = ball.findIndex( item => item == results[key] );
-         rez[index] = key;
-      }
-  }
-  return rez;
+function calculate(...arr1) {
+    return function (...arr2) {
+        let sum = [].concat(arr1, arr2).reduce((sum, item) => sum += item, 0);
+        return sum;
+    }
 }
