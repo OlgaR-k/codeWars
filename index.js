@@ -1,12 +1,3 @@
-function dataReverse(data) {
-  let rez = [];
-
-  while (data.length > 0) {
-       rez.unshift(...data.splice(0, 8));
-   }
-   console.log(rez);
-  return rez;
-
+function getDecimal(n){
+  return Math.abs(n % 1); // fix me 
 }
-
-dataReverse([1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,1,0,1,0,1,0]);
