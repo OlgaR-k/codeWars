@@ -1,15 +1,24 @@
 
-function sortMyString(S) {
-  let result = new Array(Math.floor(S.length / 2) + S.length % 2);
-  result.push(' ');
-  for (let i = 0; i < S.length; i++ ) {
-    if ( i % 2 === 0) {
-      result[i/2] = S[i];
-    } else {
-      result.push(S[i]);
-    }
-  }
-  return result.join('');
+function sentence(List) {
+  let order = [];
+  List.forEach( (item) => {
+      order.push( Object.entries(item)[0][0] );
+  } );
+  order.sort( (a, b) => a - b );
+
+  let result = new Array(order.length);
+
+  List.forEach( (item) => {
+    let [key, value] = [Object.keys(item)[0], Object.values(item)[0]];
+    result[order.findIndex( val => val == key)] = value;
+  } );
+
+  return result.join(' ');
 }
 
-console.log(sortMyString("CMAHuNnHNWYW5mL2e9Kfuvj5xAkk7")); 
+const List = [
+  {'4': 'dog' }, {'2': 'took'}, {'3': 'his'},
+  {'-2': 'Vatsan'}, {'5': 'for'}, {'6': 'a'}, {'12': 'spin'}
+ ];
+
+console.log(sentence(List));
