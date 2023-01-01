@@ -1,15 +1,15 @@
 
-function nicknameGenerator(name) {
-  let glass = ['a','e','i','o','u'];
-
-  if (name.length < 4) {
-    return "Error: Name too short"
+function sortMyString(S) {
+  let result = new Array(Math.floor(S.length / 2) + S.length % 2);
+  result.push(' ');
+  for (let i = 0; i < S.length; i++ ) {
+    if ( i % 2 === 0) {
+      result[i/2] = S[i];
+    } else {
+      result.push(S[i]);
+    }
   }
-  let lastLetter = 3;
-  if ( glass.includes( name.slice(2, lastLetter) ) ) {
-    lastLetter++;
-  }
-  return name.slice(0, lastLetter);
+  return result.join('');
 }
 
-console.log(nicknameGenerator("Samantha"));
+console.log(sortMyString("CMAHuNnHNWYW5mL2e9Kfuvj5xAkk7")); 
